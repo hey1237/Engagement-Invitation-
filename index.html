@@ -18,8 +18,10 @@
 
     body {
       font-family: "Georgia", serif;
-      background: linear-gradient(180deg, #fff5f8, #fff8f0);
-      color: #5b2d2f;
+      background:
+        radial-gradient(circle at top, rgba(255, 213, 79, 0.10), transparent 25%),
+        linear-gradient(180deg, #fff5f8 0%, #fff8f2 45%, #fff5f8 100%);
+      color: #5c2f33;
       overflow-x: hidden;
     }
 
@@ -28,108 +30,122 @@
     }
 
     .container {
-      width: min(1150px, 92%);
+      width: min(1180px, 92%);
       margin: auto;
     }
 
     .section {
-      padding: 80px 0;
+      padding: 88px 0;
       position: relative;
     }
 
-    h1, h2, h3 {
-      margin-bottom: 14px;
+    .section::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 26px;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #f0b84d, transparent);
+      opacity: 0.75;
     }
 
     .sub {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 30px;
       text-align: center;
-      line-height: 1.8;
-      color: #7b5b5d;
+      line-height: 1.85;
+      color: #7b5c5f;
       font-size: 17px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: 28px;
-      box-shadow: 0 18px 35px rgba(0,0,0,0.08);
-      padding: 28px;
     }
 
     .btn {
       border: none;
       border-radius: 999px;
-      padding: 14px 26px;
+      padding: 14px 28px;
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       color: white;
       background: linear-gradient(90deg, #d63384, #f0b84d);
-      box-shadow: 0 10px 22px rgba(214, 51, 132, 0.25);
+      box-shadow: 0 10px 24px rgba(214, 51, 132, 0.24);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(214, 51, 132, 0.32);
+      box-shadow: 0 16px 30px rgba(214, 51, 132, 0.30);
     }
 
     .btn-outline {
-      background: white;
+      background: rgba(255,255,255,0.9);
       color: #c02674;
-      border: 1px solid #f2c3d8;
+      border: 1px solid #f2cade;
     }
 
-    /* OPEN SCREEN */
+    .card {
+      background: rgba(255,255,255,0.80);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+      padding: 28px;
+    }
+
+    /* text animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: all 0.9s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Opening screen */
     #openScreen {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       position: relative;
       overflow: hidden;
+      text-align: center;
       background:
-        radial-gradient(circle at top, rgba(255,215,0,0.20), transparent 30%),
-        linear-gradient(180deg, #fff1f7 0%, #fff8f3 100%);
+        radial-gradient(circle at top, rgba(255,215,0,0.18), transparent 28%),
+        linear-gradient(180deg, #fff0f7 0%, #fff8f3 100%);
     }
 
     .open-ornament {
       position: absolute;
-      width: 260px;
-      height: 260px;
-      border: 2px solid rgba(212, 96, 154, 0.12);
+      width: 280px;
+      height: 280px;
+      border: 2px solid rgba(214, 51, 132, 0.10);
       border-radius: 50%;
       filter: blur(1px);
     }
 
-    .open-ornament.one {
-      top: -70px;
-      left: -70px;
-    }
-
-    .open-ornament.two {
-      bottom: -80px;
-      right: -80px;
-    }
+    .open-ornament.one { top: -80px; left: -80px; }
+    .open-ornament.two { bottom: -90px; right: -90px; }
 
     .open-card {
-      width: min(720px, 92%);
-      padding: 46px 26px;
-      border-radius: 34px;
+      width: min(760px, 92%);
+      padding: 52px 28px;
+      border-radius: 38px;
       background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.09);
-      border: 1px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.09);
+      border: 1px solid rgba(255,255,255,0.82);
       position: relative;
       z-index: 2;
     }
 
-    .open-card .mini {
+    .mini-top {
       color: #c02674;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -138,20 +154,22 @@
     }
 
     .open-card h1 {
-      font-size: clamp(36px, 6vw, 66px);
+      font-size: clamp(38px, 6vw, 72px);
       color: #b11f69;
-      line-height: 1.1;
+      line-height: 1.08;
       margin-bottom: 14px;
+      text-shadow: 0 0 18px rgba(240,184,77,0.20);
     }
 
     .open-card p {
-      color: #7b5b5d;
       font-size: 18px;
-      line-height: 1.8;
-      margin-bottom: 24px;
+      color: #7b5c5f;
+      line-height: 1.9;
+      max-width: 620px;
+      margin: 0 auto 24px;
     }
 
-    /* PETALS */
+    /* petals */
     #petals {
       position: fixed;
       inset: 0;
@@ -165,10 +183,11 @@
       top: -40px;
       width: 16px;
       height: 12px;
-      background: linear-gradient(135deg, #ff7eb3, #f43f87);
+      background: linear-gradient(135deg, #ff9fc8, #f43f87);
       border-radius: 60% 40% 60% 40%;
       opacity: 0.8;
       animation: fall linear forwards;
+      filter: blur(0.2px);
     }
 
     @keyframes fall {
@@ -177,15 +196,15 @@
         opacity: 0;
       }
       10% {
-        opacity: 0.9;
+        opacity: 0.95;
       }
       100% {
-        transform: translateY(110vh) translateX(50px) rotate(360deg);
+        transform: translateY(110vh) translateX(60px) rotate(360deg);
         opacity: 0;
       }
     }
 
-    /* MAIN CONTENT */
+    /* main */
     #mainContent {
       opacity: 0;
       transform: translateY(20px);
@@ -197,23 +216,23 @@
       transform: translateY(0);
     }
 
-    /* HERO */
+    /* Hero */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 42px;
       align-items: center;
       position: relative;
     }
 
-    .hero::before {
+    .hero::after {
       content: "";
       position: absolute;
-      inset: 40px 0 auto 0;
-      height: 280px;
-      background: radial-gradient(circle, rgba(240,184,77,0.15), transparent 60%);
-      filter: blur(20px);
+      inset: 120px 0 auto 0;
+      height: 260px;
+      background: radial-gradient(circle, rgba(240,184,77,0.14), transparent 60%);
+      filter: blur(24px);
       z-index: 0;
     }
 
@@ -227,26 +246,29 @@
       display: inline-block;
       padding: 10px 18px;
       border-radius: 999px;
-      background: white;
+      background: rgba(255,255,255,0.95);
       color: #c02674;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       font-size: 14px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
       margin-bottom: 18px;
     }
 
     .hero-text h1 {
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.08;
+      font-size: clamp(40px, 5vw, 74px);
+      line-height: 1.06;
       color: #b11f69;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      text-shadow:
+        0 0 14px rgba(240,184,77,0.18),
+        0 0 26px rgba(214,51,132,0.08);
     }
 
-    .hero-text p {
-      color: #6d4d4f;
-      font-size: 18px;
-      line-height: 1.9;
+    .hero-text .invite-line {
+      font-size: 19px;
+      line-height: 1.95;
+      color: #6c4c4f;
+      max-width: 600px;
       margin-bottom: 26px;
-      max-width: 560px;
     }
 
     .hero-actions {
@@ -261,43 +283,54 @@
 
     .hero-glow {
       position: absolute;
-      inset: -18px;
+      inset: -20px;
       background: radial-gradient(circle, rgba(240,184,77,0.25), transparent 60%);
-      filter: blur(24px);
+      filter: blur(28px);
     }
 
     .hero-image img {
       width: 100%;
-      max-height: 560px;
-      object-fit: cover;
+      max-height: 580px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.50);
+      padding: 14px;
       border-radius: 34px;
-      border: 6px solid rgba(255,255,255,0.7);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border: 6px solid rgba(255,255,255,0.72);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.12);
       position: relative;
       z-index: 1;
     }
 
-    /* SCRATCH */
+    /* Title style */
+    .section-title {
+      text-align: center;
+      font-size: clamp(32px, 4vw, 48px);
+      color: #b11f69;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(240,184,77,0.10);
+    }
+
+    /* Scratch */
     .scratch-wrap {
-      max-width: 680px;
+      max-width: 690px;
       margin: auto;
     }
 
     .scratch-card {
       position: relative;
-      height: 260px;
+      height: 270px;
+      border-radius: 30px;
       overflow: hidden;
-      border-radius: 28px;
-      background: linear-gradient(135deg, #ffe5f1, #fff1dd);
-      box-shadow: inset 0 8px 22px rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, #ffe5f1, #fff0dd);
+      box-shadow: inset 0 8px 24px rgba(0,0,0,0.05);
     }
 
     .scratch-content {
       position: absolute;
       inset: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
       text-align: center;
       padding: 20px;
@@ -306,21 +339,21 @@
     .scratch-content .mini {
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #8c6365;
+      color: #8b6668;
       font-size: 13px;
       margin-bottom: 8px;
     }
 
     .scratch-content h3 {
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: clamp(28px, 4vw, 44px);
       color: #be185d;
+      margin-bottom: 6px;
     }
 
     .scratch-content .time {
       font-size: 24px;
       color: #9d174d;
       font-weight: bold;
-      margin-top: 6px;
     }
 
     #scratchCanvas {
@@ -331,34 +364,44 @@
       touch-action: none;
     }
 
-    /* QUOTE + ANIM */
+    /* Quote */
     .quote-line {
-      max-width: 850px;
-      margin: 0 auto 28px;
+      max-width: 900px;
+      margin: 0 auto 30px;
       text-align: center;
-      font-size: clamp(24px, 3vw, 38px);
-      line-height: 1.5;
+      font-size: clamp(25px, 3vw, 40px);
+      line-height: 1.55;
       color: #bf2f79;
       font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 200, 220, 0.55);
     }
 
     .anim-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 22px;
       max-width: 980px;
       margin: auto;
     }
 
-    .anim-grid img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
+    .anim-card,
+    .memory-card {
+      background: rgba(255,255,255,0.72);
       border-radius: 28px;
+      padding: 10px;
       box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     }
 
-    /* COUNTDOWN */
+    .anim-grid img {
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.70);
+      border-radius: 22px;
+      display: block;
+    }
+
+    /* Countdown */
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -368,17 +411,23 @@
     }
 
     .count-box {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.86);
       border-radius: 24px;
       padding: 28px 16px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.08);
       text-align: center;
+      transition: transform 0.25s ease;
+    }
+
+    .count-box:hover {
+      transform: translateY(-4px);
     }
 
     .count-box .num {
       font-size: 44px;
-      color: #be185d;
       font-weight: bold;
+      color: #be185d;
+      text-shadow: 0 0 10px rgba(240,184,77,0.10);
     }
 
     .count-box .label {
@@ -389,13 +438,13 @@
       color: #7b5b5d;
     }
 
-    /* VENUE */
+    /* Venue */
     .venue-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 24px;
       align-items: stretch;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: auto;
     }
 
@@ -416,68 +465,71 @@
     .venue-info h3 {
       font-size: 34px;
       color: #4d2c2f;
+      margin-bottom: 10px;
     }
 
     .venue-info p {
       font-size: 18px;
-      color: #6d4d4f;
-      margin: 10px 0 18px;
       line-height: 1.8;
+      color: #6d4d4f;
+      margin-bottom: 18px;
     }
 
     iframe {
       width: 100%;
-      height: 360px;
+      height: 370px;
       border: 0;
       border-radius: 28px;
       box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     }
 
-    /* GALLERY */
+    /* Memories */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      max-width: 1100px;
+      gap: 20px;
+      max-width: 1120px;
       margin: auto;
     }
 
     .gallery img {
       width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 24px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      height: 340px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.75);
+      border-radius: 22px;
+      display: block;
+      padding: 8px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+    .memory-card:hover img {
+      transform: scale(1.02);
     }
 
-    /* FOOTER */
+    /* Footer */
     .footer-box {
-      max-width: 980px;
+      max-width: 1000px;
       margin: auto;
       background: linear-gradient(90deg, #d63384, #ec4899, #f0b84d);
       color: white;
-      border-radius: 30px;
-      padding: 46px 24px;
+      border-radius: 32px;
+      padding: 50px 24px;
       text-align: center;
-      box-shadow: 0 20px 36px rgba(214, 51, 132, 0.24);
+      box-shadow: 0 22px 38px rgba(214, 51, 132, 0.24);
     }
 
     .footer-box h2 {
-      font-size: clamp(30px, 4vw, 44px);
+      font-size: clamp(32px, 4vw, 46px);
       margin-bottom: 12px;
+      text-shadow: 0 0 12px rgba(255,255,255,0.15);
     }
 
     .footer-box p {
-      max-width: 720px;
+      max-width: 760px;
       margin: auto;
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     @media (max-width: 900px) {
@@ -500,7 +552,8 @@
         text-align: center;
       }
 
-      .hero-text p {
+      .hero-text .invite-line,
+      .sub {
         margin-left: auto;
         margin-right: auto;
       }
@@ -513,24 +566,22 @@
         text-align: center;
       }
 
-      .anim-grid img,
+      .anim-grid img {
+        height: 320px;
+      }
+
       .gallery img {
-        height: 280px;
+        height: 260px;
       }
     }
 
     @media (max-width: 520px) {
       .section {
-        padding: 58px 0;
+        padding: 64px 0;
       }
 
       .count-box .num {
         font-size: 34px;
-      }
-
-      .anim-grid img,
-      .gallery img {
-        height: 240px;
       }
     }
   </style>
@@ -539,17 +590,17 @@
 
   <div id="petals"></div>
 
-  <!-- OPEN SCREEN -->
+  <!-- Opening Screen -->
   <section id="openScreen">
     <div class="open-ornament one"></div>
     <div class="open-ornament two"></div>
 
-    <div class="open-card">
-      <div class="mini">Dreamy Engagement Invitation</div>
+    <div class="open-card fade-up show">
+      <div class="mini-top">Dreamy Engagement Invitation</div>
       <h1>Rishika ❤️ Priyanshu</h1>
       <p>
         With the divine blessings of Lord Ganesha, we invite you to open a
-        celebration of love, joy, and togetherness.
+        heartfelt celebration of love, joy, and togetherness.
       </p>
       <button class="btn" onclick="openInvite()">Open Invitation</button>
     </div>
@@ -562,15 +613,15 @@
   <div id="mainContent" class="hidden">
     <div class="container">
 
-      <!-- HERO -->
-      <section class="hero">
+      <!-- Hero -->
+      <section class="hero fade-up">
         <div class="hero-text">
           <div class="hero-tag">With the divine blessings of Lord Ganesha</div>
           <h1>Rishika ❤️ Priyanshu</h1>
-          <p>
+          <p class="invite-line">
             Together with their families, they request the pleasure of your
-            presence to bless their engagement ceremony and make this beautiful
-            beginning even more memorable.
+            presence to bless their engagement ceremony and witness the beginning
+            of a beautiful forever.
           </p>
           <div class="hero-actions">
             <a href="#scratchSection" class="btn">Reveal the Date</a>
@@ -586,9 +637,9 @@
         </div>
       </section>
 
-      <!-- SCRATCH -->
-      <section class="section" id="scratchSection">
-        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Scratch to Reveal the Date</h2>
+      <!-- Scratch -->
+      <section class="section fade-up" id="scratchSection">
+        <h2 class="section-title">Scratch to Reveal the Date</h2>
         <p class="sub">A little surprise before the celebration begins.</p>
 
         <div class="scratch-wrap card">
@@ -603,21 +654,25 @@
         </div>
       </section>
 
-      <!-- QUOTE + ANIM -->
-      <section class="section">
+      <!-- Quote + animated -->
+      <section class="section fade-up">
         <div class="quote-line">
           “Two hearts, one beautiful promise, and a forever that begins with love.” 💖
         </div>
 
         <div class="anim-grid">
-          <img src="image/anim1.png" alt="Animated image 1" />
-          <img src="image/anim2.png" alt="Animated image 2" />
+          <div class="anim-card">
+            <img src="image/anim1.png" alt="Animated image 1" />
+          </div>
+          <div class="anim-card">
+            <img src="image/anim2.png" alt="Animated image 2" />
+          </div>
         </div>
       </section>
 
-      <!-- COUNTDOWN -->
-      <section class="section">
-        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Countdown to the Celebration</h2>
+      <!-- Countdown -->
+      <section class="section fade-up">
+        <h2 class="section-title">Countdown to the Celebration</h2>
         <p class="sub">Every moment brings us closer to their special evening.</p>
 
         <div class="countdown">
@@ -640,9 +695,9 @@
         </div>
       </section>
 
-      <!-- VENUE -->
-      <section class="section">
-        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Venue</h2>
+      <!-- Venue -->
+      <section class="section fade-up">
+        <h2 class="section-title">Venue</h2>
         <p class="sub">We would be delighted to celebrate this joyful occasion with you.</p>
 
         <div class="venue-grid">
@@ -659,23 +714,23 @@
         </div>
       </section>
 
-      <!-- MEMORIES -->
-      <section class="section">
-        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Couple Memories</h2>
+      <!-- Memories -->
+      <section class="section fade-up">
+        <h2 class="section-title">Couple Memories</h2>
         <p class="sub">A few sweet moments filled with smiles, warmth, and togetherness.</p>
 
         <div class="gallery">
-          <img src="image/img1.png" alt="Memory 1" />
-          <img src="image/img2.png" alt="Memory 2" />
-          <img src="image/img3.png" alt="Memory 3" />
-          <img src="image/img4.png" alt="Memory 4" />
-          <img src="image/img5.png" alt="Memory 5" />
-          <img src="image/img6.png" alt="Memory 6" />
+          <div class="memory-card"><img src="image/img1.png" alt="Memory 1" /></div>
+          <div class="memory-card"><img src="image/img2.png" alt="Memory 2" /></div>
+          <div class="memory-card"><img src="image/img3.png" alt="Memory 3" /></div>
+          <div class="memory-card"><img src="image/img4.png" alt="Memory 4" /></div>
+          <div class="memory-card"><img src="image/img5.png" alt="Memory 5" /></div>
+          <div class="memory-card"><img src="image/img6.png" alt="Memory 6" /></div>
         </div>
       </section>
 
-      <!-- FOOTER -->
-      <section class="section">
+      <!-- Footer -->
+      <section class="section fade-up">
         <div class="footer-box">
           <h2>Please Join Us and Bless the Couple</h2>
           <p>
@@ -694,27 +749,25 @@
     const petalsContainer = document.getElementById("petals");
     const audio = document.getElementById("bgMusic");
     let isPlaying = false;
+    let petalInterval;
 
-    function createPetals(count = 30) {
+    function createPetals(count = 22) {
       for (let i = 0; i < count; i++) {
         const petal = document.createElement("div");
         petal.className = "petal";
         petal.style.left = Math.random() * 100 + "vw";
-        petal.style.animationDuration = (4 + Math.random() * 5) + "s";
-        petal.style.animationDelay = (Math.random() * 1.5) + "s";
-        petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+        petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+        petal.style.animationDelay = (Math.random() * 1.2) + "s";
         petal.style.opacity = (0.45 + Math.random() * 0.45).toString();
         petalsContainer.appendChild(petal);
 
-        setTimeout(() => {
-          petal.remove();
-        }, 10000);
+        setTimeout(() => petal.remove(), 11000);
       }
     }
 
     function openInvite() {
-      createPetals(45);
-      setInterval(() => createPetals(12), 3500);
+      createPetals(36);
+      petalInterval = setInterval(() => createPetals(10), 3500);
 
       audio.play().then(() => {
         isPlaying = true;
@@ -730,7 +783,10 @@
       setTimeout(() => {
         openScreen.style.display = "none";
         mainContent.classList.remove("hidden");
-        setTimeout(() => mainContent.classList.add("show"), 80);
+        setTimeout(() => {
+          mainContent.classList.add("show");
+          revealOnScroll();
+        }, 80);
       }, 900);
     }
 
@@ -747,7 +803,7 @@
       }
     }
 
-    // Countdown
+    // countdown
     const targetDate = new Date("2026-07-10T19:00:00").getTime();
 
     function updateCountdown() {
@@ -776,7 +832,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Scratch card
+    // scratch card
     const canvas = document.getElementById("scratchCanvas");
     const ctx = canvas.getContext("2d");
     let isDrawing = false;
@@ -784,7 +840,6 @@
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
 
@@ -798,7 +853,7 @@
       ctx.fillRect(0, 0, rect.width, rect.height);
 
       ctx.fillStyle = "rgba(255,255,255,0.35)";
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 110; i++) {
         ctx.beginPath();
         ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, 0, Math.PI * 2);
         ctx.fill();
@@ -818,6 +873,7 @@
 
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
       let transparent = 0;
+
       for (let i = 3; i < imageData.length; i += 4) {
         if (imageData[i] === 0) transparent++;
       }
@@ -843,6 +899,19 @@
         isDrawing = false;
       });
     });
+
+    // scroll animation
+    function revealOnScroll() {
+      const elements = document.querySelectorAll(".fade-up");
+      const triggerBottom = window.innerHeight * 0.88;
+
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < triggerBottom) el.classList.add("show");
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
   </script>
 </body>
 </html>
