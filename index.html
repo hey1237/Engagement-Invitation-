@@ -17,9 +17,9 @@
     }
 
     body {
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #fff0f6, #fff7ed);
-      color: #5a2a2a;
+      font-family: "Georgia", serif;
+      background: linear-gradient(180deg, #fff5f8, #fff8f0);
+      color: #5b2d2f;
       overflow-x: hidden;
     }
 
@@ -27,205 +27,300 @@
       display: none;
     }
 
-    .section {
-      padding: 70px 20px;
-      text-align: center;
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
     }
 
-    .container {
-      max-width: 1150px;
-      margin: auto;
+    .section {
+      padding: 80px 0;
+      position: relative;
     }
 
     h1, h2, h3 {
       margin-bottom: 14px;
     }
 
-    p {
-      line-height: 1.7;
+    .sub {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      text-align: center;
+      line-height: 1.8;
+      color: #7b5b5d;
+      font-size: 17px;
     }
 
-    button, .btn {
-      padding: 14px 24px;
+    .card {
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 28px;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+      padding: 28px;
+    }
+
+    .btn {
       border: none;
       border-radius: 999px;
-      background: linear-gradient(90deg, #ff4da6, #e7b84b);
-      color: white;
+      padding: 14px 26px;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 77, 166, 0.25);
-      transition: transform 0.2s ease;
       text-decoration: none;
       display: inline-block;
+      color: white;
+      background: linear-gradient(90deg, #d63384, #f0b84d);
+      box-shadow: 0 10px 22px rgba(214, 51, 132, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    button:hover, .btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(214, 51, 132, 0.32);
     }
 
-    /* Opening screen */
+    .btn-outline {
+      background: white;
+      color: #c02674;
+      border: 1px solid #f2c3d8;
+    }
+
+    /* OPEN SCREEN */
     #openScreen {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at top, rgba(255, 215, 0, 0.22), transparent 30%),
-        linear-gradient(180deg, #ffe4ec, #fff6fb 45%, #fff5ea);
       text-align: center;
-      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top, rgba(255,215,0,0.20), transparent 30%),
+        linear-gradient(180deg, #fff1f7 0%, #fff8f3 100%);
+    }
+
+    .open-ornament {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border: 2px solid rgba(212, 96, 154, 0.12);
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .open-ornament.one {
+      top: -70px;
+      left: -70px;
+    }
+
+    .open-ornament.two {
+      bottom: -80px;
+      right: -80px;
     }
 
     .open-card {
-      max-width: 700px;
-      width: 100%;
+      width: min(720px, 92%);
+      padding: 46px 26px;
+      border-radius: 34px;
       background: rgba(255,255,255,0.78);
       backdrop-filter: blur(10px);
-      border-radius: 32px;
-      padding: 40px 24px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
-      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.09);
+      border: 1px solid rgba(255,255,255,0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .open-card .mini {
+      color: #c02674;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 14px;
     }
 
     .open-card h1 {
-      font-size: clamp(34px, 6vw, 64px);
-      color: #d63384;
+      font-size: clamp(36px, 6vw, 66px);
+      color: #b11f69;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
     .open-card p {
+      color: #7b5b5d;
       font-size: 18px;
-      color: #7a4b56;
-      margin-bottom: 22px;
+      line-height: 1.8;
+      margin-bottom: 24px;
     }
 
-    /* Hero */
+    /* PETALS */
+    #petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 16px;
+      height: 12px;
+      background: linear-gradient(135deg, #ff7eb3, #f43f87);
+      border-radius: 60% 40% 60% 40%;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* MAIN CONTENT */
+    #mainContent {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    #mainContent.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
+      gap: 40px;
       align-items: center;
-      padding: 40px 20px;
+      position: relative;
     }
 
-    .hero-text {
-      text-align: left;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 40px 0 auto 0;
+      height: 280px;
+      background: radial-gradient(circle, rgba(240,184,77,0.15), transparent 60%);
+      filter: blur(20px);
+      z-index: 0;
     }
 
-    .tag {
+    .hero-text,
+    .hero-image {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
       display: inline-block;
-      background: white;
-      color: #d63384;
+      padding: 10px 18px;
       border-radius: 999px;
-      padding: 10px 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      margin-bottom: 18px;
+      background: white;
+      color: #c02674;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       font-size: 14px;
+      margin-bottom: 18px;
     }
 
-    .hero h1 {
-      font-size: clamp(36px, 5vw, 66px);
-      line-height: 1.1;
-      color: #a81d69;
+    .hero-text h1 {
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1.08;
+      color: #b11f69;
+      margin-bottom: 18px;
     }
 
-    .hero p {
+    .hero-text p {
+      color: #6d4d4f;
       font-size: 18px;
-      color: #6d4a4a;
-      max-width: 600px;
-      margin: 18px 0 24px;
+      line-height: 1.9;
+      margin-bottom: 26px;
+      max-width: 560px;
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
     }
 
-    .ganesh-box {
+    .hero-image-wrap {
       position: relative;
     }
 
-    .ganesh-glow {
+    .hero-glow {
       position: absolute;
       inset: -18px;
-      background: radial-gradient(circle, rgba(255,215,0,0.28), rgba(255,255,255,0));
+      background: radial-gradient(circle, rgba(240,184,77,0.25), transparent 60%);
       filter: blur(24px);
-      z-index: 0;
     }
 
-    .ganesh-img {
-      position: relative;
-      z-index: 1;
+    .hero-image img {
       width: 100%;
       max-height: 560px;
       object-fit: cover;
-      border-radius: 32px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      border: 6px solid rgba(255,255,255,0.65);
+      border-radius: 34px;
+      border: 6px solid rgba(255,255,255,0.7);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Cards */
-    .card {
-      background: rgba(255,255,255,0.88);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      max-width: 950px;
-      margin: auto;
-    }
-
-    .sub {
-      max-width: 780px;
-      margin: 0 auto 28px;
-      color: #7c5c5c;
-      font-size: 17px;
-    }
-
-    /* Scratch */
-    .scratch-wrapper {
-      max-width: 650px;
+    /* SCRATCH */
+    .scratch-wrap {
+      max-width: 680px;
       margin: auto;
     }
 
     .scratch-card {
       position: relative;
-      height: 250px;
-      border-radius: 26px;
+      height: 260px;
       overflow: hidden;
-      background: linear-gradient(135deg, #ffe5f1, #fff0de);
-      box-shadow: inset 0 8px 24px rgba(0,0,0,0.05);
+      border-radius: 28px;
+      background: linear-gradient(135deg, #ffe5f1, #fff1dd);
+      box-shadow: inset 0 8px 22px rgba(0,0,0,0.05);
     }
 
     .scratch-content {
       position: absolute;
       inset: 0;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 18px;
+      justify-content: center;
+      flex-direction: column;
       text-align: center;
+      padding: 20px;
     }
 
     .scratch-content .mini {
-      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #8b5f5f;
+      color: #8c6365;
+      font-size: 13px;
       margin-bottom: 8px;
     }
 
     .scratch-content h3 {
       font-size: clamp(28px, 4vw, 42px);
       color: #be185d;
-      margin-bottom: 6px;
     }
 
     .scratch-content .time {
       font-size: 24px;
-      font-weight: bold;
       color: #9d174d;
+      font-weight: bold;
+      margin-top: 6px;
     }
 
     #scratchCanvas {
@@ -236,24 +331,23 @@
       touch-action: none;
     }
 
-    /* Quote + animated pics */
-    .quote-box {
-      max-width: 960px;
-      margin: auto;
-    }
-
+    /* QUOTE + ANIM */
     .quote-line {
+      max-width: 850px;
+      margin: 0 auto 28px;
+      text-align: center;
       font-size: clamp(24px, 3vw, 38px);
-      color: #b83280;
+      line-height: 1.5;
+      color: #bf2f79;
       font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 28px;
     }
 
     .anim-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+      max-width: 980px;
+      margin: auto;
     }
 
     .anim-grid img {
@@ -261,10 +355,10 @@
       height: 350px;
       object-fit: cover;
       border-radius: 28px;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     }
 
-    /* Countdown */
+    /* COUNTDOWN */
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -274,16 +368,17 @@
     }
 
     .count-box {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.88);
       border-radius: 24px;
-      padding: 26px 16px;
+      padding: 28px 16px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      text-align: center;
     }
 
     .count-box .num {
       font-size: 44px;
-      font-weight: bold;
       color: #be185d;
+      font-weight: bold;
     }
 
     .count-box .label {
@@ -291,10 +386,10 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 13px;
-      color: #7c5c5c;
+      color: #7b5b5d;
     }
 
-    /* Venue */
+    /* VENUE */
     .venue-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -310,23 +405,24 @@
 
     .venue-badge {
       display: inline-block;
-      background: #ffe4ef;
-      color: #be185d;
       padding: 8px 14px;
       border-radius: 999px;
+      background: #ffe4ef;
+      color: #be185d;
       font-size: 14px;
       margin-bottom: 16px;
     }
 
     .venue-info h3 {
       font-size: 34px;
-      color: #4a2c2a;
+      color: #4d2c2f;
     }
 
     .venue-info p {
       font-size: 18px;
-      color: #6d4a4a;
-      margin-bottom: 18px;
+      color: #6d4d4f;
+      margin: 10px 0 18px;
+      line-height: 1.8;
     }
 
     iframe {
@@ -334,10 +430,10 @@
       height: 360px;
       border: 0;
       border-radius: 28px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     }
 
-    /* Gallery */
+    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -352,34 +448,36 @@
       object-fit: cover;
       border-radius: 24px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.03);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer-box {
       max-width: 980px;
       margin: auto;
-      background: linear-gradient(90deg, #db2777, #ec4899, #e7b84b);
+      background: linear-gradient(90deg, #d63384, #ec4899, #f0b84d);
       color: white;
       border-radius: 30px;
-      padding: 42px 24px;
-      box-shadow: 0 20px 36px rgba(219,39,119,0.22);
+      padding: 46px 24px;
+      text-align: center;
+      box-shadow: 0 20px 36px rgba(214, 51, 132, 0.24);
     }
 
     .footer-box h2 {
-      color: white;
-      font-size: clamp(28px, 4vw, 42px);
-      margin-bottom: 10px;
+      font-size: clamp(30px, 4vw, 44px);
+      margin-bottom: 12px;
     }
 
     .footer-box p {
       max-width: 720px;
       margin: auto;
       font-size: 18px;
+      line-height: 1.8;
     }
 
     @media (max-width: 900px) {
@@ -402,83 +500,98 @@
         text-align: center;
       }
 
-      .gallery img,
-      .anim-grid img {
-        height: 280px;
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
       }
 
       .venue-info {
         text-align: center;
       }
+
+      .anim-grid img,
+      .gallery img {
+        height: 280px;
+      }
     }
 
     @media (max-width: 520px) {
       .section {
-        padding: 52px 16px;
+        padding: 58px 0;
       }
 
       .count-box .num {
         font-size: 34px;
       }
 
-      .gallery img,
-      .anim-grid img {
+      .anim-grid img,
+      .gallery img {
         height: 240px;
-      }
-
-      .open-card {
-        padding: 32px 18px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Opening screen -->
-  <div id="openScreen">
-    <div class="open-card">
-      <h1>You're Invited 💌</h1>
-      <p>Tap below to open a dreamy celebration of love, blessings, and togetherness.</p>
-      <button id="openBtn" onclick="openInvite()">Open Invitation</button>
-    </div>
-  </div>
+  <div id="petals"></div>
 
-  <!-- Music -->
+  <!-- OPEN SCREEN -->
+  <section id="openScreen">
+    <div class="open-ornament one"></div>
+    <div class="open-ornament two"></div>
+
+    <div class="open-card">
+      <div class="mini">Dreamy Engagement Invitation</div>
+      <h1>Rishika ❤️ Priyanshu</h1>
+      <p>
+        With the divine blessings of Lord Ganesha, we invite you to open a
+        celebration of love, joy, and togetherness.
+      </p>
+      <button class="btn" onclick="openInvite()">Open Invitation</button>
+    </div>
+  </section>
+
   <audio id="bgMusic" loop>
     <source src="music/song.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Main site -->
   <div id="mainContent" class="hidden">
     <div class="container">
 
-      <!-- Hero -->
+      <!-- HERO -->
       <section class="hero">
         <div class="hero-text">
-          <div class="tag">With the divine blessings of Lord Ganesha</div>
+          <div class="hero-tag">With the divine blessings of Lord Ganesha</div>
           <h1>Rishika ❤️ Priyanshu</h1>
           <p>
-            Together with love, joy, and family blessings, we invite you to celebrate
-            the engagement ceremony of two beautiful hearts beginning a new journey.
+            Together with their families, they request the pleasure of your
+            presence to bless their engagement ceremony and make this beautiful
+            beginning even more memorable.
           </p>
-          <div class="hero-buttons">
-            <a class="btn" href="#scratchSection">Reveal the Date</a>
-            <button id="musicBtn" onclick="toggleMusic()">Pause Music</button>
+          <div class="hero-actions">
+            <a href="#scratchSection" class="btn">Reveal the Date</a>
+            <button class="btn btn-outline" id="musicBtn" onclick="toggleMusic()">Pause Music</button>
           </div>
         </div>
 
-        <div class="ganesh-box">
-          <div class="ganesh-glow"></div>
-          <img class="ganesh-img" src="image/ganesh.png" alt="Lord Ganesha" />
+        <div class="hero-image">
+          <div class="hero-image-wrap">
+            <div class="hero-glow"></div>
+            <img src="image/ganesh.png" alt="Lord Ganesha" />
+          </div>
         </div>
       </section>
 
-      <!-- Scratch -->
+      <!-- SCRATCH -->
       <section class="section" id="scratchSection">
-        <h2>Scratch to Reveal the Date</h2>
+        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Scratch to Reveal the Date</h2>
         <p class="sub">A little surprise before the celebration begins.</p>
 
-        <div class="scratch-wrapper card">
+        <div class="scratch-wrap card">
           <div class="scratch-card">
             <div class="scratch-content">
               <div class="mini">Engagement Date</div>
@@ -490,24 +603,22 @@
         </div>
       </section>
 
-      <!-- Quote + 2 images -->
+      <!-- QUOTE + ANIM -->
       <section class="section">
-        <div class="quote-box">
-          <div class="quote-line">
-            “Two hearts, one beautiful promise, and a forever that begins with love.” 💖
-          </div>
+        <div class="quote-line">
+          “Two hearts, one beautiful promise, and a forever that begins with love.” 💖
+        </div>
 
-          <div class="anim-grid">
-            <img src="image/anim1.png" alt="Animated couple 1" />
-            <img src="image/anim2.png" alt="Animated couple 2" />
-          </div>
+        <div class="anim-grid">
+          <img src="image/anim1.png" alt="Animated image 1" />
+          <img src="image/anim2.png" alt="Animated image 2" />
         </div>
       </section>
 
-      <!-- Countdown -->
+      <!-- COUNTDOWN -->
       <section class="section">
-        <h2>Countdown to the Celebration</h2>
-        <p class="sub">Every passing moment brings us closer to their special evening.</p>
+        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Countdown to the Celebration</h2>
+        <p class="sub">Every moment brings us closer to their special evening.</p>
 
         <div class="countdown">
           <div class="count-box">
@@ -529,9 +640,9 @@
         </div>
       </section>
 
-      <!-- Venue -->
+      <!-- VENUE -->
       <section class="section">
-        <h2>Venue</h2>
+        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Venue</h2>
         <p class="sub">We would be delighted to celebrate this joyful occasion with you.</p>
 
         <div class="venue-grid">
@@ -539,28 +650,18 @@
             <div class="venue-badge">Event Location</div>
             <h3>Rajashree Banquet Hall</h3>
             <p>Rajshree Anandnagar</p>
-            <a
-              class="btn"
-              target="_blank"
-              href="https://www.google.com/maps/search/?api=1&query=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar"
-            >
-              Open in Google Maps
-            </a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar">Open in Google Maps</a>
           </div>
 
           <div>
-            <iframe
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar&z=15&output=embed">
-            </iframe>
+            <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar&z=15&output=embed"></iframe>
           </div>
         </div>
       </section>
 
-      <!-- Gallery -->
+      <!-- MEMORIES -->
       <section class="section">
-        <h2>Couple Memories</h2>
+        <h2 style="text-align:center; font-size:clamp(30px,4vw,44px); color:#b11f69;">Couple Memories</h2>
         <p class="sub">A few sweet moments filled with smiles, warmth, and togetherness.</p>
 
         <div class="gallery">
@@ -573,13 +674,13 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- FOOTER -->
       <section class="section">
         <div class="footer-box">
           <h2>Please Join Us and Bless the Couple</h2>
           <p>
-            Your presence will make this occasion even more beautiful, memorable,
-            and full of joy for our family.
+            Your gracious presence will make this occasion even more beautiful,
+            joyful, and unforgettable for our family.
           </p>
         </div>
       </section>
@@ -590,23 +691,51 @@
   <script>
     const openScreen = document.getElementById("openScreen");
     const mainContent = document.getElementById("mainContent");
+    const petalsContainer = document.getElementById("petals");
     const audio = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
     let isPlaying = false;
 
+    function createPetals(count = 30) {
+      for (let i = 0; i < count; i++) {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (4 + Math.random() * 5) + "s";
+        petal.style.animationDelay = (Math.random() * 1.5) + "s";
+        petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+        petal.style.opacity = (0.45 + Math.random() * 0.45).toString();
+        petalsContainer.appendChild(petal);
+
+        setTimeout(() => {
+          petal.remove();
+        }, 10000);
+      }
+    }
+
     function openInvite() {
-      openScreen.style.display = "none";
-      mainContent.classList.remove("hidden");
+      createPetals(45);
+      setInterval(() => createPetals(12), 3500);
+
       audio.play().then(() => {
         isPlaying = true;
+        const musicBtn = document.getElementById("musicBtn");
         if (musicBtn) musicBtn.innerText = "Pause Music";
       }).catch(() => {
         isPlaying = false;
-        if (musicBtn) musicBtn.innerText = "Play Music";
       });
+
+      openScreen.style.transition = "opacity 1s ease";
+      openScreen.style.opacity = "0";
+
+      setTimeout(() => {
+        openScreen.style.display = "none";
+        mainContent.classList.remove("hidden");
+        setTimeout(() => mainContent.classList.add("show"), 80);
+      }, 900);
     }
 
     function toggleMusic() {
+      const musicBtn = document.getElementById("musicBtn");
       if (!isPlaying) {
         audio.play();
         isPlaying = true;
@@ -664,20 +793,14 @@
 
       const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
       gradient.addColorStop(0, "#f9a8d4");
-      gradient.addColorStop(1, "#f7c948");
+      gradient.addColorStop(1, "#f0b84d");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
       ctx.fillStyle = "rgba(255,255,255,0.35)";
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 100; i++) {
         ctx.beginPath();
-        ctx.arc(
-          Math.random() * rect.width,
-          Math.random() * rect.height,
-          Math.random() * 2 + 1,
-          0,
-          Math.PI * 2
-        );
+        ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -690,12 +813,11 @@
     function scratch(x, y) {
       const rect = canvas.getBoundingClientRect();
       ctx.beginPath();
-      ctx.arc(x - rect.left, y - rect.top, 22, 0, Math.PI * 2);
+      ctx.arc(x - rect.left, y - rect.top, 24, 0, Math.PI * 2);
       ctx.fill();
 
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
       let transparent = 0;
-
       for (let i = 3; i < imageData.length; i += 4) {
         if (imageData[i] === 0) transparent++;
       }
@@ -716,7 +838,7 @@
       scratch(e.clientX, e.clientY);
     });
 
-    ["pointerup", "pointerleave"].forEach((type) => {
+    ["pointerup", "pointerleave"].forEach(type => {
       canvas.addEventListener(type, () => {
         isDrawing = false;
       });
