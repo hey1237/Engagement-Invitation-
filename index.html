@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rishika ❤️ Priyanshu</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,46 +18,48 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Cormorant Garamond',serif;
 background:#f8f1ef;
+font-family:'Cormorant Garamond',serif;
 overflow-x:hidden;
 color:#5e3a3a;
 }
 
 /* BACKGROUND GLOW */
 
-.bg-glow{
+.bg1{
 position:fixed;
 width:500px;
 height:500px;
-background:radial-gradient(circle,#ffd6ea,#fff0);
-top:-100px;
-left:-100px;
+background:radial-gradient(circle,#ffd8ea,#ffffff00);
+top:-120px;
+left:-120px;
 z-index:-1;
-filter:blur(40px);
-animation:moveGlow 8s infinite alternate;
+filter:blur(60px);
+animation:move1 8s infinite alternate;
 }
 
-.bg-glow2{
+.bg2{
 position:fixed;
-width:450px;
-height:450px;
-background:radial-gradient(circle,#ffe4a8,#fff0);
-bottom:-100px;
-right:-100px;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#ffe4b5,#ffffff00);
+bottom:-120px;
+right:-120px;
 z-index:-1;
-filter:blur(40px);
-animation:moveGlow2 10s infinite alternate;
+filter:blur(60px);
+animation:move2 8s infinite alternate;
 }
 
-@keyframes moveGlow{
-0%{transform:translate(0,0);}
-100%{transform:translate(100px,50px);}
+@keyframes move1{
+100%{
+transform:translate(80px,40px);
+}
 }
 
-@keyframes moveGlow2{
-0%{transform:translate(0,0);}
-100%{transform:translate(-100px,-50px);}
+@keyframes move2{
+100%{
+transform:translate(-80px,-40px);
+}
 }
 
 /* HERO */
@@ -66,27 +69,50 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
+padding:20px;
 }
 
 .hero-card{
-background:rgba(255,255,255,0.5);
-backdrop-filter:blur(12px);
-padding:40px 25px;
-border-radius:35px;
 width:100%;
-max-width:450px;
+max-width:500px;
+background:rgba(255,255,255,0.45);
+backdrop-filter:blur(14px);
+padding:50px 30px;
+border-radius:35px;
 text-align:center;
 box-shadow:0 10px 40px rgba(0,0,0,0.08);
-animation:fadeUp 1.5s ease;
 position:relative;
 overflow:hidden;
+animation:fadeUp 1.5s ease;
+}
+
+.hero-card::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(
+45deg,
+transparent,
+rgba(255,255,255,0.5),
+transparent
+);
+top:-50%;
+left:-150%;
+transform:rotate(25deg);
+animation:shine 5s infinite;
+}
+
+@keyframes shine{
+100%{
+left:150%;
+}
 }
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(50px);
 }
 to{
 opacity:1;
@@ -94,45 +120,45 @@ transform:translateY(0);
 }
 }
 
-.hero-card::before{
-content:"";
-position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:linear-gradient(45deg,transparent,rgba(255,255,255,0.5),transparent);
-transform:rotate(25deg);
-animation:shine 5s infinite;
-}
+/* GANESH */
 
-@keyframes shine{
-0%{left:-120%;}
-100%{left:120%;}
-}
-
-/* RP LOGO */
-
-.rp-logo{
-width:220px;
+.ganesh{
+width:120px;
 margin:auto;
 display:block;
-margin-bottom:20px;
+margin-bottom:25px;
 animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* RP LOGO */
+
+.rp{
+width:240px;
+margin:auto;
+display:block;
+margin-bottom:25px;
+animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+100%{
+filter:drop-shadow(0 0 20px rgba(255,215,0,0.6));
+}
 }
 
 /* TEXT */
 
-.blessing{
-font-size:20px;
-line-height:1.7;
-margin-top:20px;
-color:#7b5b5b;
+.hero-text{
+font-size:26px;
+line-height:1.8;
+color:#755555;
+margin-top:10px;
 animation:fadeText 2s ease;
 }
 
@@ -152,12 +178,12 @@ margin-top:35px;
 padding:16px 45px;
 border:none;
 border-radius:50px;
-font-size:22px;
+font-size:24px;
 font-weight:bold;
 cursor:pointer;
-background:linear-gradient(45deg,#e92d87,#f2c14d);
+background:linear-gradient(45deg,#e92d87,#f3c04d);
 color:white;
-box-shadow:0 10px 25px rgba(233,45,135,0.3);
+box-shadow:0 10px 25px rgba(233,45,135,0.25);
 transition:0.4s;
 font-family:'Cormorant Garamond',serif;
 }
@@ -170,13 +196,13 @@ transform:scale(1.08);
 
 .petals{
 position:fixed;
-width:100%;
-height:100%;
 top:0;
 left:0;
+width:100%;
+height:100%;
 pointer-events:none;
 overflow:hidden;
-z-index:1000;
+z-index:999;
 display:none;
 }
 
@@ -186,8 +212,8 @@ width:18px;
 height:18px;
 background:pink;
 border-radius:50% 50% 50% 0;
-opacity:0.7;
 transform:rotate(45deg);
+opacity:0.7;
 animation:fall linear forwards;
 }
 
@@ -202,9 +228,9 @@ opacity:0;
 }
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
-.main-content{
+.main{
 display:none;
 animation:fadeMain 2s ease;
 }
@@ -225,82 +251,62 @@ padding:90px 20px;
 text-align:center;
 }
 
-.section-title{
-font-size:55px;
+.title{
+font-size:58px;
 color:#b01269;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
-.section-text{
-font-size:24px;
+.text{
+font-size:26px;
 max-width:850px;
 margin:auto;
-line-height:1.8;
+line-height:1.9;
 }
 
-/* SCRATCH CARD */
+/* SAVE THE DATE */
 
-.scratch-container{
+.save-card{
 margin-top:50px;
 display:flex;
 justify-content:center;
 }
 
-.scratch-card{
-width:320px;
-height:430px;
-background:white;
+.save-card img{
+width:100%;
+max-width:420px;
 border-radius:30px;
-padding:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-overflow:hidden;
-animation:zoomIn 1.5s ease;
+box-shadow:0 12px 35px rgba(0,0,0,0.1);
+animation:zoom 1.5s ease;
 }
 
-@keyframes zoomIn{
+@keyframes zoom{
 from{
-transform:scale(0.8);
 opacity:0;
+transform:scale(0.8);
 }
 to{
-transform:scale(1);
 opacity:1;
+transform:scale(1);
 }
 }
 
-.scratch-card img{
+/* PROMISE */
+
+.promise-img{
 width:100%;
-height:100%;
-object-fit:cover;
-border-radius:22px;
-}
-
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+max-width:420px;
+border-radius:30px;
 margin-top:50px;
-}
-
-.gallery img{
-width:100%;
-height:420px;
+box-shadow:0 12px 35px rgba(0,0,0,0.12);
 object-fit:cover;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:0.5s;
-}
-
-.gallery img:hover{
-transform:translateY(-10px) scale(1.03);
+animation:fadeUp 1.5s ease;
 }
 
 /* VENUE */
 
 .venue-card{
-margin-top:40px;
+margin-top:45px;
 background:white;
 padding:35px;
 border-radius:30px;
@@ -312,12 +318,12 @@ box-shadow:0 10px 30px rgba(0,0,0,0.08);
 .venue-btn{
 display:inline-block;
 margin-top:25px;
-padding:14px 30px;
-background:linear-gradient(45deg,#e92d87,#f2c14d);
+padding:15px 35px;
+background:linear-gradient(45deg,#e92d87,#f3c04d);
 color:white;
 text-decoration:none;
-border-radius:40px;
-font-size:20px;
+border-radius:50px;
+font-size:22px;
 font-weight:bold;
 }
 
@@ -325,20 +331,24 @@ font-weight:bold;
 
 @media(max-width:768px){
 
-.rp-logo{
-width:170px;
+.hero-card{
+padding:40px 22px;
 }
 
-.section-title{
+.rp{
+width:180px;
+}
+
+.hero-text{
+font-size:22px;
+}
+
+.title{
 font-size:42px;
 }
 
-.section-text{
-font-size:21px;
-}
-
-.gallery img{
-height:330px;
+.text{
+font-size:22px;
 }
 
 }
@@ -348,120 +358,129 @@ height:330px;
 
 <body>
 
-<div class="bg-glow"></div>
-<div class="bg-glow2"></div>
+<div class="bg1"></div>
+<div class="bg2"></div>
 
 <!-- PETALS -->
 <div class="petals" id="petals"></div>
 
 <!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-card">
 
-<!-- CHANGE THIS IMAGE -->
-<img src="image/rp.png" class="rp-logo">
+<!-- TOP GANESH -->
+<img src="image/ganesh.png" class="ganesh">
 
-<p class="blessing">
-With the divine blessings of Lord Ganesha,<br>
-we invite you to open a heartfelt celebration<br>
+<!-- RP LOGO -->
+<img src="image/rp.png" class="rp">
+
+<p class="hero-text">
+
+With the divine blessings of Lord Ganesha,
+we invite you to open a heartfelt celebration
 of love, joy, and togetherness.
+
 </p>
 
-<button class="open-btn" onclick="openInvitation()">
+<button class="open-btn" onclick="openInvite()">
+
 Open Invitation
+
 </button>
 
 </div>
 
 </section>
 
-<!-- MAIN CONTENT -->
-<div class="main-content" id="mainContent">
+<!-- MAIN -->
+
+<div class="main" id="main">
 
 <!-- MUSIC -->
 <audio id="music" loop>
 <source src="music/song.mp3" type="audio/mp3">
 </audio>
 
-<!-- NOTE SECTION -->
+<!-- NOTE -->
+
 <section class="section">
 
-<h1 class="section-title">
+<h1 class="title">
 A Beautiful Beginning ✨
 </h1>
 
-<p class="section-text">
+<p class="text">
+
 From a beautiful story to a beautiful forever —
 join us as we make it official and celebrate
 the beginning of our forever together.
+
 </p>
 
 </section>
 
-<!-- SCRATCH CARD -->
+<!-- SAVE THE DATE -->
+
 <section class="section">
 
-<h1 class="section-title">
+<h1 class="title">
 Save The Date 💍
 </h1>
 
-<div class="scratch-container">
+<div class="save-card">
 
-<div class="scratch-card">
-
-<!-- CHANGE THIS IMAGE -->
+<!-- SAVE THE DATE IMAGE -->
 <img src="image/anim1.jpg">
 
 </div>
 
-</div>
-
 </section>
 
-<!-- SECOND PAGE -->
+<!-- STORY -->
+
 <section class="section">
 
-<h1 class="section-title">
+<h1 class="title">
 Our Story ❤️
 </h1>
 
-<p class="section-text">
-Every smile, every conversation,
-every little moment led us here.
-Now with love in our hearts and dreams in our eyes,
-we step into forever together.
+<p class="text">
+
+Every smile, every little moment,
+every heartbeat led us here.
+Now hand in hand, we step
+into forever together.
+
 </p>
 
 </section>
 
-<!-- GALLERY -->
+<!-- PROMISE -->
+
 <section class="section">
 
-<h1 class="section-title">
-Sweet Memories ✨
+<h1 class="title">
+Two hearts, one beautiful promise,
+and a forever that begins with love. 💖
 </h1>
 
-<div class="gallery">
-
-<!-- CHANGE THESE IMAGES -->
-<img src="image/img1.jpg">
-<img src="image/img2.jpg">
-
-</div>
+<img src="image/promise.jpg" class="promise-img">
 
 </section>
 
 <!-- VENUE -->
+
 <section class="section">
 
-<h1 class="section-title">
+<h1 class="title">
 Venue 📍
 </h1>
 
 <div class="venue-card">
 
-<p class="section-text" style="font-size:22px;">
+<p class="text" style="font-size:22px;">
 
 We would be delighted to have your gracious presence
 at our engagement celebration.
@@ -486,9 +505,14 @@ Open Venue Location
 
 /* OPEN INVITATION */
 
-function openInvitation(){
+function openInvite(){
 
-document.getElementById("mainContent").style.display="block";
+document.getElementById("main").style.display="block";
+
+document.getElementById("main")
+.scrollIntoView({
+behavior:"smooth"
+});
 
 /* MUSIC */
 
@@ -502,16 +526,9 @@ console.log("Autoplay blocked");
 
 startPetals();
 
-/* SCROLL */
-
-document.getElementById("mainContent")
-.scrollIntoView({
-behavior:"smooth"
-});
-
 }
 
-/* PETALS EFFECT */
+/* PETALS */
 
 function startPetals(){
 
@@ -533,7 +550,7 @@ petal.style.animationDuration=
 (Math.random()*3+4)+"s";
 
 petal.style.background=
-["#ff6fa5","#ffb6c1","#ff8fb1","#ffd1dc"]
+["#ff8fb1","#ffb6c1","#ff69b4","#ffd1dc"]
 [Math.floor(Math.random()*4)];
 
 petals.appendChild(petal);
