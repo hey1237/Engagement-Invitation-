@@ -6,7 +6,7 @@
 
 <title>Rishika ❤️ Priyanshu</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,48 +18,34 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#f8f1ef;
 font-family:'Cormorant Garamond',serif;
+background:#f8f1ef;
 overflow-x:hidden;
 color:#5e3a3a;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND */
 
 .bg1{
 position:fixed;
 width:500px;
 height:500px;
 background:radial-gradient(circle,#ffd8ea,#ffffff00);
-top:-120px;
-left:-120px;
-z-index:-1;
+top:-150px;
+left:-150px;
 filter:blur(60px);
-animation:move1 8s infinite alternate;
+z-index:-1;
 }
 
 .bg2{
 position:fixed;
 width:500px;
 height:500px;
-background:radial-gradient(circle,#ffe4b5,#ffffff00);
-bottom:-120px;
-right:-120px;
-z-index:-1;
+background:radial-gradient(circle,#ffe0a8,#ffffff00);
+bottom:-150px;
+right:-150px;
 filter:blur(60px);
-animation:move2 8s infinite alternate;
-}
-
-@keyframes move1{
-100%{
-transform:translate(80px,40px);
-}
-}
-
-@keyframes move2{
-100%{
-transform:translate(-80px,-40px);
-}
+z-index:-1;
 }
 
 /* HERO */
@@ -72,62 +58,27 @@ align-items:center;
 padding:20px;
 }
 
-.hero-card{
+.card{
 width:100%;
 max-width:500px;
-background:rgba(255,255,255,0.45);
-backdrop-filter:blur(14px);
-padding:50px 30px;
+background:rgba(255,255,255,0.5);
+backdrop-filter:blur(10px);
+padding:45px 25px;
 border-radius:35px;
 text-align:center;
-box-shadow:0 10px 40px rgba(0,0,0,0.08);
-position:relative;
-overflow:hidden;
-animation:fadeUp 1.5s ease;
+box-shadow:0 10px 35px rgba(0,0,0,0.08);
 }
-
-.hero-card::before{
-content:"";
-position:absolute;
-width:200%;
-height:200%;
-background:linear-gradient(
-45deg,
-transparent,
-rgba(255,255,255,0.5),
-transparent
-);
-top:-50%;
-left:-150%;
-transform:rotate(25deg);
-animation:shine 5s infinite;
-}
-
-@keyframes shine{
-100%{
-left:150%;
-}
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* GANESH */
 
 .ganesh{
 width:120px;
-margin:auto;
-display:block;
+margin-bottom:20px;
+animation:float 4s infinite ease-in-out;
+}
+
+.rp{
+width:230px;
 margin-bottom:25px;
-animation:float 4s ease-in-out infinite;
+animation:glow 3s infinite alternate;
 }
 
 @keyframes float{
@@ -136,33 +87,39 @@ transform:translateY(-10px);
 }
 }
 
-/* RP LOGO */
-
-.rp{
-width:240px;
-margin:auto;
-display:block;
-margin-bottom:25px;
-animation:glow 3s infinite alternate;
-}
-
 @keyframes glow{
 100%{
-filter:drop-shadow(0 0 20px rgba(255,215,0,0.6));
+filter:drop-shadow(0 0 15px gold);
 }
 }
-
-/* TEXT */
 
 .hero-text{
-font-size:26px;
+font-size:28px;
 line-height:1.8;
-color:#755555;
-margin-top:10px;
-animation:fadeText 2s ease;
+color:#6b4b4b;
 }
 
-@keyframes fadeText{
+.btn{
+margin-top:35px;
+padding:16px 45px;
+border:none;
+border-radius:50px;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(45deg,#e92d87,#f2c14d);
+color:white;
+box-shadow:0 10px 25px rgba(233,45,135,0.25);
+}
+
+/* MAIN */
+
+#main{
+display:none;
+animation:fade 1.5s ease;
+}
+
+@keyframes fade{
 from{
 opacity:0;
 }
@@ -171,25 +128,58 @@ opacity:1;
 }
 }
 
-/* BUTTON */
+/* SECTION */
 
-.open-btn{
-margin-top:35px;
-padding:16px 45px;
-border:none;
-border-radius:50px;
-font-size:24px;
-font-weight:bold;
-cursor:pointer;
-background:linear-gradient(45deg,#e92d87,#f3c04d);
-color:white;
-box-shadow:0 10px 25px rgba(233,45,135,0.25);
-transition:0.4s;
-font-family:'Cormorant Garamond',serif;
+.section{
+padding:90px 20px;
+text-align:center;
 }
 
-.open-btn:hover{
-transform:scale(1.08);
+.title{
+font-size:55px;
+color:#b01269;
+margin-bottom:25px;
+}
+
+.text{
+font-size:28px;
+line-height:1.8;
+max-width:850px;
+margin:auto;
+}
+
+/* IMAGE */
+
+.big-img{
+width:100%;
+max-width:420px;
+border-radius:28px;
+margin-top:40px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* VENUE */
+
+.venue-card{
+background:white;
+padding:35px;
+border-radius:30px;
+max-width:700px;
+margin:auto;
+margin-top:40px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.location-btn{
+display:inline-block;
+margin-top:25px;
+padding:15px 35px;
+background:linear-gradient(45deg,#e92d87,#f2c14d);
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-size:22px;
+font-weight:bold;
 }
 
 /* PETALS */
@@ -228,127 +218,28 @@ opacity:0;
 }
 }
 
-/* MAIN */
-
-.main{
-display:none;
-animation:fadeMain 2s ease;
-}
-
-@keyframes fadeMain{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
-}
-
-/* SECTIONS */
-
-.section{
-padding:90px 20px;
-text-align:center;
-}
-
-.title{
-font-size:58px;
-color:#b01269;
-margin-bottom:25px;
-}
-
-.text{
-font-size:26px;
-max-width:850px;
-margin:auto;
-line-height:1.9;
-}
-
-/* SAVE THE DATE */
-
-.save-card{
-margin-top:50px;
-display:flex;
-justify-content:center;
-}
-
-.save-card img{
-width:100%;
-max-width:420px;
-border-radius:30px;
-box-shadow:0 12px 35px rgba(0,0,0,0.1);
-animation:zoom 1.5s ease;
-}
-
-@keyframes zoom{
-from{
-opacity:0;
-transform:scale(0.8);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-
-/* PROMISE */
-
-.promise-img{
-width:100%;
-max-width:420px;
-border-radius:30px;
-margin-top:50px;
-box-shadow:0 12px 35px rgba(0,0,0,0.12);
-object-fit:cover;
-animation:fadeUp 1.5s ease;
-}
-
-/* VENUE */
-
-.venue-card{
-margin-top:45px;
-background:white;
-padding:35px;
-border-radius:30px;
-max-width:700px;
-margin-inline:auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.venue-btn{
-display:inline-block;
-margin-top:25px;
-padding:15px 35px;
-background:linear-gradient(45deg,#e92d87,#f3c04d);
-color:white;
-text-decoration:none;
-border-radius:50px;
-font-size:22px;
-font-weight:bold;
-}
-
 /* MOBILE */
 
 @media(max-width:768px){
-
-.hero-card{
-padding:40px 22px;
-}
 
 .rp{
 width:180px;
 }
 
 .hero-text{
-font-size:22px;
+font-size:23px;
 }
 
 .title{
-font-size:42px;
+font-size:40px;
 }
 
 .text{
 font-size:22px;
+}
+
+.big-img{
+max-width:95%;
 }
 
 }
@@ -361,16 +252,15 @@ font-size:22px;
 <div class="bg1"></div>
 <div class="bg2"></div>
 
-<!-- PETALS -->
 <div class="petals" id="petals"></div>
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-card">
+<div class="card">
 
-<!-- TOP GANESH -->
+<!-- TOP GANESH IMAGE -->
 <img src="image/ganesh.png" class="ganesh">
 
 <!-- RP LOGO -->
@@ -384,7 +274,7 @@ of love, joy, and togetherness.
 
 </p>
 
-<button class="open-btn" onclick="openInvite()">
+<button class="btn" onclick="openInvitation()">
 
 Open Invitation
 
@@ -394,16 +284,16 @@ Open Invitation
 
 </section>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 
-<div class="main" id="main">
+<div id="main">
 
 <!-- MUSIC -->
 <audio id="music" loop>
 <source src="music/song.mp3" type="audio/mp3">
 </audio>
 
-<!-- NOTE -->
+<!-- PAGE 1 -->
 
 <section class="section">
 
@@ -421,7 +311,7 @@ the beginning of our forever together.
 
 </section>
 
-<!-- SAVE THE DATE -->
+<!-- PAGE 2 -->
 
 <section class="section">
 
@@ -429,16 +319,12 @@ the beginning of our forever together.
 Save The Date 💍
 </h1>
 
-<div class="save-card">
-
 <!-- SAVE THE DATE IMAGE -->
-<img src="image/anim1.jpg">
-
-</div>
+<img src="image/anim1.jpg" class="big-img">
 
 </section>
 
-<!-- STORY -->
+<!-- PAGE 3 -->
 
 <section class="section">
 
@@ -457,7 +343,7 @@ into forever together.
 
 </section>
 
-<!-- PROMISE -->
+<!-- PAGE 4 -->
 
 <section class="section">
 
@@ -466,11 +352,12 @@ Two hearts, one beautiful promise,
 and a forever that begins with love. 💖
 </h1>
 
-<img src="image/promise.jpg" class="promise-img">
+<!-- PROMISE IMAGE -->
+<img src="image/promise.jpg" class="big-img">
 
 </section>
 
-<!-- VENUE -->
+<!-- PAGE 5 -->
 
 <section class="section">
 
@@ -487,9 +374,9 @@ at our engagement celebration.
 
 </p>
 
-<a class="venue-btn"
-href="https://share.google/UDrNqdH7oZKtKviyF"
-target="_blank">
+<a href="https://share.google/UDrNqdH7oZKtKviyF"
+target="_blank"
+class="location-btn">
 
 Open Venue Location
 
@@ -503,14 +390,11 @@ Open Venue Location
 
 <script>
 
-/* OPEN INVITATION */
-
-function openInvite(){
+function openInvitation(){
 
 document.getElementById("main").style.display="block";
 
-document.getElementById("main")
-.scrollIntoView({
+document.getElementById("main").scrollIntoView({
 behavior:"smooth"
 });
 
@@ -519,7 +403,7 @@ behavior:"smooth"
 const music=document.getElementById("music");
 
 music.play().catch(()=>{
-console.log("Autoplay blocked");
+console.log("Music autoplay blocked");
 });
 
 /* PETALS */
@@ -528,7 +412,7 @@ startPetals();
 
 }
 
-/* PETALS */
+/* PETALS EFFECT */
 
 function startPetals(){
 
@@ -550,7 +434,7 @@ petal.style.animationDuration=
 (Math.random()*3+4)+"s";
 
 petal.style.background=
-["#ff8fb1","#ffb6c1","#ff69b4","#ffd1dc"]
+["#ff69b4","#ffb6c1","#ffd1dc","#ff8fb1"]
 [Math.floor(Math.random()*4)];
 
 petals.appendChild(petal);
