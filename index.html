@@ -1,917 +1,976 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rishika ❤️ Priyanshu | Engagement Invitation</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Georgia", serif;
-      background:
-        radial-gradient(circle at top, rgba(255, 213, 79, 0.10), transparent 25%),
-        linear-gradient(180deg, #fff5f8 0%, #fff8f2 45%, #fff5f8 100%);
-      color: #5c2f33;
-      overflow-x: hidden;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    .section {
-      padding: 88px 0;
-      position: relative;
-    }
-
-    .section::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 26px;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, transparent, #f0b84d, transparent);
-      opacity: 0.75;
-    }
-
-    .sub {
-      max-width: 780px;
-      margin: 0 auto 30px;
-      text-align: center;
-      line-height: 1.85;
-      color: #7b5c5f;
-      font-size: 17px;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 14px 28px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      color: white;
-      background: linear-gradient(90deg, #d63384, #f0b84d);
-      box-shadow: 0 10px 24px rgba(214, 51, 132, 0.24);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(214, 51, 132, 0.30);
-    }
-
-    .btn-outline {
-      background: rgba(255,255,255,0.9);
-      color: #c02674;
-      border: 1px solid #f2cade;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.80);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.7);
-      border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.07);
-      padding: 28px;
-    }
-
-    /* text animation */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: all 0.9s ease;
-    }
-
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Opening screen */
-    #openScreen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      background:
-        radial-gradient(circle at top, rgba(255,215,0,0.18), transparent 28%),
-        linear-gradient(180deg, #fff0f7 0%, #fff8f3 100%);
-    }
-
-    .open-ornament {
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border: 2px solid rgba(214, 51, 132, 0.10);
-      border-radius: 50%;
-      filter: blur(1px);
-    }
-
-    .open-ornament.one { top: -80px; left: -80px; }
-    .open-ornament.two { bottom: -90px; right: -90px; }
-
-    .open-card {
-      width: min(760px, 92%);
-      padding: 52px 28px;
-      border-radius: 38px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 44px rgba(0,0,0,0.09);
-      border: 1px solid rgba(255,255,255,0.82);
-      position: relative;
-      z-index: 2;
-    }
-
-    .mini-top {
-      color: #c02674;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-
-    .open-card h1 {
-      font-size: clamp(38px, 6vw, 72px);
-      color: #b11f69;
-      line-height: 1.08;
-      margin-bottom: 14px;
-      text-shadow: 0 0 18px rgba(240,184,77,0.20);
-    }
-
-    .open-card p {
-      font-size: 18px;
-      color: #7b5c5f;
-      line-height: 1.9;
-      max-width: 620px;
-      margin: 0 auto 24px;
-    }
-
-    /* petals */
-    #petals {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 999;
-    }
-
-    .petal {
-      position: absolute;
-      top: -40px;
-      width: 16px;
-      height: 12px;
-      background: linear-gradient(135deg, #ff9fc8, #f43f87);
-      border-radius: 60% 40% 60% 40%;
-      opacity: 0.8;
-      animation: fall linear forwards;
-      filter: blur(0.2px);
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-20px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.95;
-      }
-      100% {
-        transform: translateY(110vh) translateX(60px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* main */
-    #mainContent {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease;
-    }
-
-    #mainContent.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 120px 0 auto 0;
-      height: 260px;
-      background: radial-gradient(circle, rgba(240,184,77,0.14), transparent 60%);
-      filter: blur(24px);
-      z-index: 0;
-    }
-
-    .hero-text,
-    .hero-image {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.95);
-      color: #c02674;
-      font-size: 14px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-      margin-bottom: 18px;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(40px, 5vw, 74px);
-      line-height: 1.06;
-      color: #b11f69;
-      margin-bottom: 16px;
-      text-shadow:
-        0 0 14px rgba(240,184,77,0.18),
-        0 0 26px rgba(214,51,132,0.08);
-    }
-
-    .hero-text .invite-line {
-      font-size: 19px;
-      line-height: 1.95;
-      color: #6c4c4f;
-      max-width: 600px;
-      margin-bottom: 26px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .hero-image-wrap {
-      position: relative;
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: -20px;
-      background: radial-gradient(circle, rgba(240,184,77,0.25), transparent 60%);
-      filter: blur(28px);
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-height: 580px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.50);
-      padding: 14px;
-      border-radius: 34px;
-      border: 6px solid rgba(255,255,255,0.72);
-      box-shadow: 0 22px 44px rgba(0,0,0,0.12);
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Title style */
-    .section-title {
-      text-align: center;
-      font-size: clamp(32px, 4vw, 48px);
-      color: #b11f69;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(240,184,77,0.10);
-    }
-
-    /* Scratch */
-    .scratch-wrap {
-      max-width: 690px;
-      margin: auto;
-    }
-
-    .scratch-card {
-      position: relative;
-      height: 270px;
-      border-radius: 30px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #ffe5f1, #fff0dd);
-      box-shadow: inset 0 8px 24px rgba(0,0,0,0.05);
-    }
-
-    .scratch-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .scratch-content .mini {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #8b6668;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .scratch-content h3 {
-      font-size: clamp(28px, 4vw, 44px);
-      color: #be185d;
-      margin-bottom: 6px;
-    }
-
-    .scratch-content .time {
-      font-size: 24px;
-      color: #9d174d;
-      font-weight: bold;
-    }
-
-    #scratchCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      touch-action: none;
-    }
-
-    /* Quote */
-    .quote-line {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      text-align: center;
-      font-size: clamp(25px, 3vw, 40px);
-      line-height: 1.55;
-      color: #bf2f79;
-      font-weight: 600;
-      text-shadow: 0 0 10px rgba(255, 200, 220, 0.55);
-    }
-
-    .anim-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      max-width: 980px;
-      margin: auto;
-    }
-
-    .anim-card,
-    .memory-card {
-      background: rgba(255,255,255,0.72);
-      border-radius: 28px;
-      padding: 10px;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-    }
-
-    .anim-grid img {
-      width: 100%;
-      height: 420px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.70);
-      border-radius: 22px;
-      display: block;
-    }
-
-    /* Countdown */
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .count-box {
-      background: rgba(255,255,255,0.86);
-      border-radius: 24px;
-      padding: 28px 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.25s ease;
-    }
-
-    .count-box:hover {
-      transform: translateY(-4px);
-    }
-
-    .count-box .num {
-      font-size: 44px;
-      font-weight: bold;
-      color: #be185d;
-      text-shadow: 0 0 10px rgba(240,184,77,0.10);
-    }
-
-    .count-box .label {
-      margin-top: 8px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      color: #7b5b5d;
-    }
-
-    /* Venue */
-    .venue-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-      max-width: 1120px;
-      margin: auto;
-    }
-
-    .venue-info {
-      text-align: left;
-    }
-
-    .venue-badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #ffe4ef;
-      color: #be185d;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .venue-info h3 {
-      font-size: 34px;
-      color: #4d2c2f;
-      margin-bottom: 10px;
-    }
-
-    .venue-info p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #6d4d4f;
-      margin-bottom: 18px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 370px;
-      border: 0;
-      border-radius: 28px;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-    }
-
-    /* Memories */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1120px;
-      margin: auto;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 340px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.75);
-      border-radius: 22px;
-      display: block;
-      padding: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .memory-card:hover img {
-      transform: scale(1.02);
-    }
-
-    /* Footer */
-    .footer-box {
-      max-width: 1000px;
-      margin: auto;
-      background: linear-gradient(90deg, #d63384, #ec4899, #f0b84d);
-      color: white;
-      border-radius: 32px;
-      padding: 50px 24px;
-      text-align: center;
-      box-shadow: 0 22px 38px rgba(214, 51, 132, 0.24);
-    }
-
-    .footer-box h2 {
-      font-size: clamp(32px, 4vw, 46px);
-      margin-bottom: 12px;
-      text-shadow: 0 0 12px rgba(255,255,255,0.15);
-    }
-
-    .footer-box p {
-      max-width: 760px;
-      margin: auto;
-      font-size: 18px;
-      line-height: 1.9;
-    }
-
-    @media (max-width: 900px) {
-      .hero,
-      .anim-grid,
-      .venue-grid,
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-text {
-        text-align: center;
-      }
-
-      .hero-text .invite-line,
-      .sub {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .venue-info {
-        text-align: center;
-      }
-
-      .anim-grid img {
-        height: 320px;
-      }
-
-      .gallery img {
-        height: 260px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .section {
-        padding: 64px 0;
-      }
-
-      .count-box .num {
-        font-size: 34px;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Rishika ❤️ Priyanshu | Engagement Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Cormorant Garamond',serif;
+background:
+radial-gradient(circle at top, rgba(255,213,79,0.10), transparent 25%),
+linear-gradient(180deg,#fff5f8 0%,#fff8f2 45%,#fff5f8 100%);
+color:#5c2f33;
+overflow-x:hidden;
+}
+
+/* PETALS */
+
+#petals{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:999;
+}
+
+.petal{
+position:absolute;
+top:-40px;
+width:16px;
+height:12px;
+background:linear-gradient(135deg,#ff9fc8,#f43f87);
+border-radius:60% 40% 60% 40%;
+opacity:0.8;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-20px) rotate(0deg);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) translateX(60px) rotate(360deg);
+opacity:0;
+}
+
+}
+
+/* OPEN SCREEN */
+
+#openScreen{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+text-align:center;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at top, rgba(255,215,0,0.18), transparent 28%),
+linear-gradient(180deg,#fff0f7 0%,#fff8f3 100%);
+}
+
+.open-card{
+width:min(760px,92%);
+padding:55px 28px;
+border-radius:40px;
+background:rgba(255,255,255,0.78);
+backdrop-filter:blur(12px);
+box-shadow:0 20px 44px rgba(0,0,0,0.09);
+border:1px solid rgba(255,255,255,0.82);
+}
+
+.rp-logo{
+width:340px;
+max-width:90%;
+margin-bottom:30px;
+filter:drop-shadow(0 0 18px rgba(240,184,77,0.35));
+animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+.open-card p{
+font-size:20px;
+line-height:1.9;
+color:#7b5c5f;
+max-width:620px;
+margin:auto auto 28px;
+}
+
+.btn{
+border:none;
+border-radius:999px;
+padding:16px 34px;
+font-size:18px;
+cursor:pointer;
+text-decoration:none;
+display:inline-block;
+color:white;
+background:linear-gradient(90deg,#d63384,#f0b84d);
+box-shadow:0 10px 24px rgba(214,51,132,0.24);
+transition:0.3s;
+font-family:'Cormorant Garamond',serif;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* MAIN */
+
+.hidden{
+display:none;
+}
+
+#mainContent{
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+}
+
+#mainContent.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.container{
+width:min(1180px,92%);
+margin:auto;
+}
+
+.section{
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+font-size:clamp(32px,4vw,48px);
+color:#b11f69;
+margin-bottom:10px;
+}
+
+.sub{
+max-width:760px;
+margin:0 auto 28px;
+text-align:center;
+line-height:1.9;
+font-size:18px;
+color:#7b5c5f;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:42px;
+align-items:center;
+}
+
+.hero-tag{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:white;
+color:#c02674;
+font-size:14px;
+box-shadow:0 8px 18px rgba(0,0,0,0.08);
+margin-bottom:18px;
+}
+
+.hero-text h1{
+font-size:clamp(42px,5vw,74px);
+line-height:1.1;
+color:#b11f69;
+margin-bottom:16px;
+}
+
+.invite-line{
+font-size:20px;
+line-height:1.9;
+color:#6c4c4f;
+margin-bottom:25px;
+}
+
+.hero-actions{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.btn-outline{
+background:white;
+color:#c02674;
+border:1px solid #f2cade;
+}
+
+.hero-image img{
+width:100%;
+max-height:580px;
+object-fit:contain;
+background:rgba(255,255,255,0.5);
+padding:14px;
+border-radius:34px;
+border:6px solid rgba(255,255,255,0.72);
+box-shadow:0 22px 44px rgba(0,0,0,0.12);
+}
+
+/* SCRATCH */
+
+.card{
+background:rgba(255,255,255,0.80);
+backdrop-filter:blur(10px);
+border-radius:30px;
+box-shadow:0 20px 40px rgba(0,0,0,0.07);
+padding:28px;
+}
+
+.scratch-wrap{
+max-width:690px;
+margin:auto;
+}
+
+.scratch-card{
+position:relative;
+height:270px;
+border-radius:30px;
+overflow:hidden;
+background:linear-gradient(135deg,#ffe5f1,#fff0dd);
+}
+
+.scratch-content{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.scratch-content .mini{
+text-transform:uppercase;
+letter-spacing:3px;
+font-size:13px;
+margin-bottom:8px;
+}
+
+.scratch-content h3{
+font-size:clamp(28px,4vw,44px);
+color:#be185d;
+}
+
+.scratch-content .time{
+font-size:24px;
+font-weight:bold;
+color:#9d174d;
+}
+
+#scratchCanvas{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+touch-action:none;
+}
+
+/* QUOTE */
+
+.quote-line{
+max-width:900px;
+margin:0 auto 30px;
+text-align:center;
+font-size:clamp(25px,3vw,40px);
+line-height:1.6;
+color:#bf2f79;
+font-weight:600;
+}
+
+.anim-grid{
+display:grid;
+grid-template-columns:1fr;
+max-width:700px;
+margin:auto;
+}
+
+.anim-card{
+background:rgba(255,255,255,0.72);
+border-radius:28px;
+padding:10px;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+.anim-card img{
+width:100%;
+height:500px;
+object-fit:contain;
+background:white;
+border-radius:22px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+max-width:1000px;
+margin:auto;
+}
+
+.count-box{
+background:white;
+border-radius:24px;
+padding:28px 16px;
+box-shadow:0 10px 24px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.count-box .num{
+font-size:44px;
+font-weight:bold;
+color:#be185d;
+}
+
+.count-box .label{
+margin-top:8px;
+text-transform:uppercase;
+letter-spacing:2px;
+font-size:13px;
+}
+
+/* VENUE */
+
+.venue-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+align-items:center;
+}
+
+.venue-info{
+padding:35px;
+border-radius:30px;
+background:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.venue-info h3{
+font-size:34px;
+margin-bottom:12px;
+}
+
+.venue-info p{
+font-size:18px;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+iframe{
+width:100%;
+height:370px;
+border:0;
+border-radius:28px;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* MEMORIES */
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+max-width:850px;
+margin:auto;
+}
+
+.memory-card{
+background:rgba(255,255,255,0.72);
+border-radius:28px;
+padding:10px;
+box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+.gallery img{
+width:100%;
+height:420px;
+object-fit:contain;
+background:white;
+border-radius:22px;
+}
+
+/* FOOTER */
+
+.footer-box{
+max-width:1000px;
+margin:auto;
+background:linear-gradient(90deg,#d63384,#ec4899,#f0b84d);
+color:white;
+border-radius:32px;
+padding:50px 24px;
+text-align:center;
+box-shadow:0 22px 38px rgba(214,51,132,0.24);
+}
+
+.footer-box h2{
+font-size:clamp(32px,4vw,46px);
+margin-bottom:12px;
+}
+
+.footer-box p{
+max-width:760px;
+margin:auto;
+font-size:18px;
+line-height:1.9;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero,
+.venue-grid,
+.gallery{
+grid-template-columns:1fr;
+}
+
+.countdown{
+grid-template-columns:1fr 1fr;
+}
+
+.hero-text{
+text-align:center;
+}
+
+.hero-actions{
+justify-content:center;
+}
+
+}
+
+@media(max-width:520px){
+
+.count-box .num{
+font-size:34px;
+}
+
+.rp-logo{
+width:250px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <div id="petals"></div>
+<div id="petals"></div>
 
-  <!-- Opening Screen -->
-  <section id="openScreen">
-    <div class="open-ornament one"></div>
-    <div class="open-ornament two"></div>
+<!-- OPEN SCREEN -->
 
-    <div class="open-card fade-up show">
-      <div class="mini-top">Dreamy Engagement Invitation</div>
-      <h1>Rishika ❤️ Priyanshu</h1>
-      <p>
-        With the divine blessings of Lord Ganesha, we invite you to open a
-        heartfelt celebration of love, joy, and togetherness.
-      </p>
-      <button class="btn" onclick="openInvite()">Open Invitation</button>
-    </div>
-  </section>
+<section id="openScreen">
 
-  <audio id="bgMusic" loop>
-    <source src="music/song.mp3" type="audio/mpeg" />
-  </audio>
+<div class="open-card">
 
-  <div id="mainContent" class="hidden">
-    <div class="container">
+<img src="image/rp.png" class="rp-logo">
 
-      <!-- Hero -->
-      <section class="hero fade-up">
-        <div class="hero-text">
-          <div class="hero-tag">With the divine blessings of Lord Ganesha</div>
-          <h1>Rishika ❤️ Priyanshu</h1>
-          <p class="invite-line">
-            Together with their families, they request the pleasure of your
-            presence to bless their engagement ceremony and witness the beginning
-            of a beautiful forever.
-          </p>
-          <div class="hero-actions">
-            <a href="#scratchSection" class="btn">Reveal the Date</a>
-            <button class="btn btn-outline" id="musicBtn" onclick="toggleMusic()">Pause Music</button>
-          </div>
-        </div>
+<p>
+With the divine blessings of Lord Ganesha,
+we invite you to open a heartfelt celebration
+of love, joy, and togetherness.
+</p>
 
-        <div class="hero-image">
-          <div class="hero-image-wrap">
-            <div class="hero-glow"></div>
-            <img src="image/ganesh.png" alt="Lord Ganesha" />
-          </div>
-        </div>
-      </section>
+<button class="btn" onclick="openInvite()">
+Open Invitation
+</button>
 
-      <!-- Scratch -->
-      <section class="section fade-up" id="scratchSection">
-        <h2 class="section-title">Scratch to Reveal the Date</h2>
-        <p class="sub">A little surprise before the celebration begins.</p>
+</div>
 
-        <div class="scratch-wrap card">
-          <div class="scratch-card">
-            <div class="scratch-content">
-              <div class="mini">Engagement Date</div>
-              <h3>10 July 2026 • Friday</h3>
-              <div class="time">7:00 PM</div>
-            </div>
-            <canvas id="scratchCanvas"></canvas>
-          </div>
-        </div>
-      </section>
+</section>
 
-      <!-- Quote + animated -->
-      <section class="section fade-up">
-        <div class="quote-line">
-          “Two hearts, one beautiful promise, and a forever that begins with love.” 💖
-        </div>
+<audio id="bgMusic" loop>
+<source src="music/song.mp3" type="audio/mpeg">
+</audio>
 
-        <div class="anim-grid">
-          <div class="anim-card">
-            <img src="image/anim1.png" alt="Animated image 1" />
-          </div>
-          <div class="anim-card">
-            <img src="image/anim2.png" alt="Animated image 2" />
-          </div>
-        </div>
-      </section>
+<!-- MAIN -->
 
-      <!-- Countdown -->
-      <section class="section fade-up">
-        <h2 class="section-title">Countdown to the Celebration</h2>
-        <p class="sub">Every moment brings us closer to their special evening.</p>
+<div id="mainContent" class="hidden">
 
-        <div class="countdown">
-          <div class="count-box">
-            <div class="num" id="days">00</div>
-            <div class="label">Days</div>
-          </div>
-          <div class="count-box">
-            <div class="num" id="hours">00</div>
-            <div class="label">Hours</div>
-          </div>
-          <div class="count-box">
-            <div class="num" id="minutes">00</div>
-            <div class="label">Minutes</div>
-          </div>
-          <div class="count-box">
-            <div class="num" id="seconds">00</div>
-            <div class="label">Seconds</div>
-          </div>
-        </div>
-      </section>
+<div class="container">
 
-      <!-- Venue -->
-      <section class="section fade-up">
-        <h2 class="section-title">Venue</h2>
-        <p class="sub">We would be delighted to celebrate this joyful occasion with you.</p>
+<!-- HERO -->
 
-        <div class="venue-grid">
-          <div class="card venue-info">
-            <div class="venue-badge">Event Location</div>
-            <h3>Rajashree Banquet Hall</h3>
-            <p>Rajshree Anandnagar</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar">Open in Google Maps</a>
-          </div>
+<section class="hero">
 
-          <div>
-            <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar&z=15&output=embed"></iframe>
-          </div>
-        </div>
-      </section>
+<div class="hero-text">
 
-      <!-- Memories -->
-      <section class="section fade-up">
-        <h2 class="section-title">Couple Memories</h2>
-        <p class="sub">A few sweet moments filled with smiles, warmth, and togetherness.</p>
+<div class="hero-tag">
+With the divine blessings of Lord Ganesha
+</div>
 
-        <div class="gallery">
-          <div class="memory-card"><img src="image/img1.png" alt="Memory 1" /></div>
-          <div class="memory-card"><img src="image/img2.png" alt="Memory 2" /></div>
-          <div class="memory-card"><img src="image/img3.png" alt="Memory 3" /></div>
-          <div class="memory-card"><img src="image/img4.png" alt="Memory 4" /></div>
-          <div class="memory-card"><img src="image/img5.png" alt="Memory 5" /></div>
-          <div class="memory-card"><img src="image/img6.png" alt="Memory 6" /></div>
-        </div>
-      </section>
+<h1>
+Rishika ❤️ Priyanshu
+</h1>
 
-      <!-- Footer -->
-      <section class="section fade-up">
-        <div class="footer-box">
-          <h2>Please Join Us and Bless the Couple</h2>
-          <p>
-            Your gracious presence will make this occasion even more beautiful,
-            joyful, and unforgettable for our family.
-          </p>
-        </div>
-      </section>
+<p class="invite-line">
 
-    </div>
-  </div>
+Together with their families,
+they request the pleasure of your
+presence to bless their engagement ceremony
+and witness the beginning
+of a beautiful forever.
 
-  <script>
-    const openScreen = document.getElementById("openScreen");
-    const mainContent = document.getElementById("mainContent");
-    const petalsContainer = document.getElementById("petals");
-    const audio = document.getElementById("bgMusic");
-    let isPlaying = false;
-    let petalInterval;
+</p>
 
-    function createPetals(count = 22) {
-      for (let i = 0; i < count; i++) {
-        const petal = document.createElement("div");
-        petal.className = "petal";
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-        petal.style.animationDelay = (Math.random() * 1.2) + "s";
-        petal.style.opacity = (0.45 + Math.random() * 0.45).toString();
-        petalsContainer.appendChild(petal);
+<div class="hero-actions">
 
-        setTimeout(() => petal.remove(), 11000);
-      }
-    }
+<a href="#scratchSection" class="btn">
+Reveal The Date
+</a>
 
-    function openInvite() {
-      createPetals(36);
-      petalInterval = setInterval(() => createPetals(10), 3500);
+<button class="btn btn-outline" id="musicBtn" onclick="toggleMusic()">
+Pause Music
+</button>
 
-      audio.play().then(() => {
-        isPlaying = true;
-        const musicBtn = document.getElementById("musicBtn");
-        if (musicBtn) musicBtn.innerText = "Pause Music";
-      }).catch(() => {
-        isPlaying = false;
-      });
+</div>
 
-      openScreen.style.transition = "opacity 1s ease";
-      openScreen.style.opacity = "0";
+</div>
 
-      setTimeout(() => {
-        openScreen.style.display = "none";
-        mainContent.classList.remove("hidden");
-        setTimeout(() => {
-          mainContent.classList.add("show");
-          revealOnScroll();
-        }, 80);
-      }, 900);
-    }
+<div class="hero-image">
 
-    function toggleMusic() {
-      const musicBtn = document.getElementById("musicBtn");
-      if (!isPlaying) {
-        audio.play();
-        isPlaying = true;
-        musicBtn.innerText = "Pause Music";
-      } else {
-        audio.pause();
-        isPlaying = false;
-        musicBtn.innerText = "Play Music";
-      }
-    }
+<img src="image/main.png">
 
-    // countdown
-    const targetDate = new Date("2026-07-10T19:00:00").getTime();
+</div>
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+</section>
 
-      if (diff <= 0) {
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-        return;
-      }
+<!-- SCRATCH -->
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+<section class="section" id="scratchSection">
 
-      document.getElementById("days").innerText = String(days).padStart(2, "0");
-      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
-    }
+<h2 class="section-title">
+Scratch To Reveal The Date
+</h2>
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+<p class="sub">
+A little surprise before the celebration begins.
+</p>
 
-    // scratch card
-    const canvas = document.getElementById("scratchCanvas");
-    const ctx = canvas.getContext("2d");
-    let isDrawing = false;
+<div class="scratch-wrap card">
 
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+<div class="scratch-card">
 
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(dpr, dpr);
+<div class="scratch-content">
 
-      const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-      gradient.addColorStop(0, "#f9a8d4");
-      gradient.addColorStop(1, "#f0b84d");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, rect.width, rect.height);
+<div class="mini">
+Engagement Date
+</div>
 
-      ctx.fillStyle = "rgba(255,255,255,0.35)";
-      for (let i = 0; i < 110; i++) {
-        ctx.beginPath();
-        ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, 0, Math.PI * 2);
-        ctx.fill();
-      }
+<h3>
+10 July 2026 • Friday
+</h3>
 
-      ctx.globalCompositeOperation = "destination-out";
-    }
+<div class="time">
+7:00 PM
+</div>
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+</div>
 
-    function scratch(x, y) {
-      const rect = canvas.getBoundingClientRect();
-      ctx.beginPath();
-      ctx.arc(x - rect.left, y - rect.top, 24, 0, Math.PI * 2);
-      ctx.fill();
+<canvas id="scratchCanvas"></canvas>
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-      let transparent = 0;
+</div>
 
-      for (let i = 3; i < imageData.length; i += 4) {
-        if (imageData[i] === 0) transparent++;
-      }
+</div>
 
-      const cleared = transparent / (imageData.length / 4);
-      if (cleared > 0.42) {
-        canvas.style.display = "none";
-      }
-    }
+</section>
 
-    canvas.addEventListener("pointerdown", (e) => {
-      isDrawing = true;
-      scratch(e.clientX, e.clientY);
-    });
+<!-- QUOTE -->
 
-    canvas.addEventListener("pointermove", (e) => {
-      if (!isDrawing) return;
-      scratch(e.clientX, e.clientY);
-    });
+<section class="section">
 
-    ["pointerup", "pointerleave"].forEach(type => {
-      canvas.addEventListener(type, () => {
-        isDrawing = false;
-      });
-    });
+<div class="quote-line">
 
-    // scroll animation
-    function revealOnScroll() {
-      const elements = document.querySelectorAll(".fade-up");
-      const triggerBottom = window.innerHeight * 0.88;
+“Two hearts, one beautiful promise,
+and a forever that begins with love.” 💖
 
-      elements.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < triggerBottom) el.classList.add("show");
-      });
-    }
+</div>
 
-    window.addEventListener("scroll", revealOnScroll);
-  </script>
+<div class="anim-grid">
+
+<div class="anim-card">
+
+<img src="image/promise.png">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COUNTDOWN -->
+
+<section class="section">
+
+<h2 class="section-title">
+Countdown To The Celebration
+</h2>
+
+<p class="sub">
+Every moment brings us closer to their special evening.
+</p>
+
+<div class="countdown">
+
+<div class="count-box">
+<div class="num" id="days">00</div>
+<div class="label">Days</div>
+</div>
+
+<div class="count-box">
+<div class="num" id="hours">00</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="count-box">
+<div class="num" id="minutes">00</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="count-box">
+<div class="num" id="seconds">00</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- VENUE -->
+
+<section class="section">
+
+<h2 class="section-title">
+Venue
+</h2>
+
+<p class="sub">
+We would be delighted to celebrate this joyful occasion with you.
+</p>
+
+<div class="venue-grid">
+
+<div class="venue-info">
+
+<h3>
+Rajashree Banquet Hall
+</h3>
+
+<p>
+Rajshree Anandnagar
+</p>
+
+<a class="btn"
+target="_blank"
+href="https://share.google/UDrNqdH7oZKtKviyF">
+
+Open Venue Location
+
+</a>
+
+</div>
+
+<div>
+
+<iframe
+loading="lazy"
+src="https://www.google.com/maps?q=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar&z=15&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MEMORIES -->
+
+<section class="section">
+
+<h2 class="section-title">
+Couple Memories
+</h2>
+
+<p class="sub">
+A few sweet moments filled with smiles, warmth, and togetherness.
+</p>
+
+<div class="gallery">
+
+<div class="memory-card">
+<img src="image/img1.png">
+</div>
+
+<div class="memory-card">
+<img src="image/img2.png">
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<section class="section">
+
+<div class="footer-box">
+
+<h2>
+Please Join Us And Bless The Couple
+</h2>
+
+<p>
+
+Your gracious presence will make this occasion
+even more beautiful, joyful,
+and unforgettable for our family.
+
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+
+const openScreen=document.getElementById("openScreen");
+const mainContent=document.getElementById("mainContent");
+const petalsContainer=document.getElementById("petals");
+const audio=document.getElementById("bgMusic");
+
+let isPlaying=false;
+
+/* PETALS */
+
+function createPetals(count=22){
+
+for(let i=0;i<count;i++){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.animationDuration=
+(5+Math.random()*5)+"s";
+
+petalsContainer.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},11000);
+
+}
+
+}
+
+/* OPEN */
+
+function openInvite(){
+
+createPetals(35);
+
+audio.play().then(()=>{
+isPlaying=true;
+}).catch(()=>{});
+
+openScreen.style.transition="opacity 1s ease";
+openScreen.style.opacity="0";
+
+setTimeout(()=>{
+
+openScreen.style.display="none";
+
+mainContent.classList.remove("hidden");
+
+setTimeout(()=>{
+mainContent.classList.add("show");
+},100);
+
+},1000);
+
+}
+
+/* MUSIC */
+
+function toggleMusic(){
+
+const musicBtn=document.getElementById("musicBtn");
+
+if(!isPlaying){
+
+audio.play();
+
+isPlaying=true;
+
+musicBtn.innerText="Pause Music";
+
+}else{
+
+audio.pause();
+
+isPlaying=false;
+
+musicBtn.innerText="Play Music";
+
+}
+
+}
+
+/* COUNTDOWN */
+
+const targetDate=
+new Date("2026-07-10T19:00:00").getTime();
+
+function updateCountdown(){
+
+const now=new Date().getTime();
+
+const diff=targetDate-now;
+
+if(diff<=0)return;
+
+const days=Math.floor(diff/(1000*60*60*24));
+
+const hours=Math.floor((diff/(1000*60*60))%24);
+
+const minutes=Math.floor((diff/(1000*60))%60);
+
+const seconds=Math.floor((diff/1000)%60);
+
+document.getElementById("days").innerText=
+String(days).padStart(2,"0");
+
+document.getElementById("hours").innerText=
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes").innerText=
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds").innerText=
+String(seconds).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+/* SCRATCH CARD */
+
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+
+let isDrawing=false;
+
+function resizeCanvas(){
+
+const rect=canvas.getBoundingClientRect();
+
+canvas.width=rect.width;
+canvas.height=rect.height;
+
+const gradient=
+ctx.createLinearGradient(0,0,rect.width,rect.height);
+
+gradient.addColorStop(0,"#f9a8d4");
+gradient.addColorStop(1,"#f0b84d");
+
+ctx.fillStyle=gradient;
+
+ctx.fillRect(0,0,rect.width,rect.height);
+
+ctx.globalCompositeOperation="destination-out";
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+function scratch(x,y){
+
+const rect=canvas.getBoundingClientRect();
+
+ctx.beginPath();
+
+ctx.arc(
+x-rect.left,
+y-rect.top,
+24,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+}
+
+canvas.addEventListener("pointerdown",(e)=>{
+
+isDrawing=true;
+
+scratch(e.clientX,e.clientY);
+
+});
+
+canvas.addEventListener("pointermove",(e)=>{
+
+if(!isDrawing)return;
+
+scratch(e.clientX,e.clientY);
+
+});
+
+["pointerup","pointerleave"].forEach(type=>{
+
+canvas.addEventListener(type,()=>{
+
+isDrawing=false;
+
+});
+
+});
+
+</script>
+
 </body>
 </html>
