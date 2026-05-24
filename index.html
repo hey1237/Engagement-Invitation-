@@ -110,8 +110,8 @@ transform:translateY(0);
 /* BIG RP LOGO */
 
 .rp-logo{
-width:520px;
-max-width:95%;
+width:620px;
+max-width:98%;
 margin-bottom:35px;
 filter:
 drop-shadow(0 0 18px rgba(240,184,77,0.45))
@@ -220,7 +220,7 @@ margin-bottom:20px;
 
 .hero-image img{
 width:100%;
-max-width:560px;
+max-width:580px;
 height:auto;
 object-fit:contain;
 background:rgba(255,255,255,0.5);
@@ -476,28 +476,16 @@ grid-template-columns:1fr;
 grid-template-columns:1fr 1fr;
 }
 
-.hero-image img{
-max-width:100%;
-}
-
-.invite-line{
-font-size:20px;
-}
-
 }
 
 @media(max-width:520px){
 
 .rp-logo{
-width:330px;
+width:380px;
 }
 
 .count-box .num{
 font-size:34px;
-}
-
-.hero-image img{
-max-width:100%;
 }
 
 .gallery img{
@@ -523,7 +511,7 @@ height:340px;
 
 <div class="open-card">
 
-<img src="image/rp.png" class="rp-logo">
+<img src="./image/rp.png" class="rp-logo">
 
 <p>
 With the divine blessings of Lord Ganesha,
@@ -540,7 +528,7 @@ Open Invitation
 </section>
 
 <audio id="bgMusic" loop>
-<source src="music/song.mp3" type="audio/mpeg">
+<source src="./music/song.mp3" type="audio/mpeg">
 </audio>
 
 <!-- MAIN -->
@@ -549,14 +537,12 @@ Open Invitation
 
 <div class="container">
 
-<!-- SECOND PAGE -->
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-image">
-
-<img src="image/main.png" alt="Couple Main Image">
-
+<img src="./image/main.png" alt="Couple Main Image">
 </div>
 
 <div class="hero-text">
@@ -645,9 +631,7 @@ and a forever that begins with love.” 💖
 <div class="anim-grid">
 
 <div class="anim-card">
-
-<img src="image/promise.png">
-
+<img src="./image/promise.png">
 </div>
 
 </div>
@@ -719,9 +703,7 @@ Rajshree Anandnagar
 <a class="btn"
 target="_blank"
 href="https://share.google/UDrNqdH7oZKtKviyF">
-
 Open Venue Location
-
 </a>
 
 </div>
@@ -754,11 +736,11 @@ A few sweet moments filled with smiles, warmth, and togetherness.
 <div class="gallery">
 
 <div class="memory-card">
-<img src="image/img1.png">
+<img src="./image/img1.png">
 </div>
 
 <div class="memory-card">
-<img src="image/img2.png">
+<img src="./image/img2.png">
 </div>
 
 </div>
@@ -776,11 +758,9 @@ Please Join Us And Bless The Couple
 </h2>
 
 <p>
-
 Your gracious presence will make this occasion
 even more beautiful, joyful,
 and unforgettable for our family.
-
 </p>
 
 </div>
@@ -802,7 +782,7 @@ let isPlaying=false;
 
 /* PETALS */
 
-function createPetals(count=28){
+function createPetals(count=35){
 
 for(let i=0;i<count;i++){
 
@@ -829,11 +809,21 @@ petal.remove();
 
 function openInvite(){
 
-createPetals(40);
+createPetals(45);
 
 audio.play().then(()=>{
+
 isPlaying=true;
-}).catch(()=>{});
+
+const musicBtn=document.getElementById("musicBtn");
+
+if(musicBtn){
+musicBtn.innerText="Pause Music";
+}
+
+}).catch(()=>{
+console.log("Music autoplay blocked");
+});
 
 openScreen.style.transition="opacity 1s ease";
 openScreen.style.opacity="0";
@@ -963,6 +953,37 @@ Math.PI*2
 
 ctx.fill();
 
+const pixels=ctx.getImageData(
+0,
+0,
+canvas.width,
+canvas.height
+).data;
+
+let transparent=0;
+
+for(let i=3;i<pixels.length;i+=4){
+
+if(pixels[i]===0){
+transparent++;
+}
+
+}
+
+const percent=
+transparent/(pixels.length/4);
+
+if(percent>0.45){
+
+canvas.style.transition="0.6s";
+canvas.style.opacity="0";
+
+setTimeout(()=>{
+canvas.style.display="none";
+},600);
+
+}
+
 }
 
 canvas.addEventListener("pointerdown",(e)=>{
@@ -995,3 +1016,4 @@ isDrawing=false;
 
 </body>
 </html>
+
